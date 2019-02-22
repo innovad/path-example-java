@@ -1,15 +1,15 @@
 import {Injectable} from "@angular/core";
-import {TranslationService} from "path-framework/app/path-framework/service/translation.service"
+import {TranslationService} from "path-framework/app/path-framework/service/translation.service";
 
 @Injectable()
 export class PathExampleTranslationService extends TranslationService {
 
-    public getSupportedLanguageCodes() : string[] {
+    public getSupportedLanguageCodes(): string[] {
         return ["en", "de", "it", "nl"];
     }
 
-    protected getTranslation(key:string) : string {
-        let myTranslations = this.createTranslationMap(this.getPathExampleTranslations());
+    protected getTranslation(key: string): string {
+        const myTranslations = this.createTranslationMap(this.getPathExampleTranslations());
         // prefer custom translations
         if (myTranslations.get(key) == null) {
             return super.getTranslation(key);
@@ -18,10 +18,10 @@ export class PathExampleTranslationService extends TranslationService {
     }
 
     private getPathExampleTranslations() {
-        let languageCode: string = this.getUserLanguage();
+        const languageCode: string = this.getUserLanguage();
 
         // put additional application translations here
-        if (languageCode == "de") {
+        if (languageCode === "de") {
             return {
                 "Admin": "Admin",
                 "AddPermissionRole": "Rolle hinzufügen",
@@ -57,14 +57,14 @@ export class PathExampleTranslationService extends TranslationService {
                 "Value": "Wert",
                 "ValueDescription": "Wert-Beschreibung",
                 "Width": "Breite"
-            }
+            };
         } else {
             return {
                 "Admin": "Admin",
                 "BusinessCases": "Business Cases",
                 "NotImplemented": "User account is not implemented",
                 "Reset": "Reset",
-            }
+            };
         }
     }
 
